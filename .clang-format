@@ -1,0 +1,43 @@
+# Formatting for TinyShell. `clang-format -i src/*.c` before you commit.
+#
+# The codebase is small enough that keeping it in one style by hand is a losing
+# game. The interesting part is the prose in the comments, and reindenting code
+# by feel is exactly the sort of thing that creates a 400-line diff on a
+# two-line change. Let the tool do the mechanical part.
+---
+Language: C
+BasedOnStyle: LLVM
+
+IndentWidth: 2
+TabWidth: 2
+UseTab: Never
+ContinuationIndentWidth: 2
+ColumnLimit: 80
+
+# Attach braces, and keep every `if` body on its own line. Collapsing a
+# one-statement `if` to a single line looks tidier right up until the moment
+# you add a second statement to it.
+BreakBeforeBraces: Attach
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: None
+
+# `switch` cases sit at the same indentation as the `switch`, not one level in.
+IndentCaseLabels: false
+
+PointerAlignment: Right
+DerivePointerAlignment: false
+SpaceBeforeParens: ControlStatements
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+
+# Comment reflowing is off on purpose. These comments are written as prose and
+# the line breaks in them are deliberate. In particular the ASCII diagrams
+# and the aligned tables. Reformatting them would flatten the reasoning.
+ReflowComments: false
+
+SortIncludes: CaseSensitive
+IncludeBlocks: Preserve
