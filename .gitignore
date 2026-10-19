@@ -1,0 +1,15 @@
+# build artifacts
+build/
+tinyshell
+
+# objects / deps
+*.o
+*.d
+
+# editors
+*~
+.session.vim
+
+# core dumps
+core
+core.*
