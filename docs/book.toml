@@ -1,0 +1,23 @@
+[book]
+title = "The TinyShell Book"
+description = "Learn Unix systems programming in C by finishing a small shell."
+authors = ["Yoav Haimov"]
+language = "en"
+src = "src"
+
+[build]
+build-dir = "../build/book"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "ayu"
+no-section-label = false
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
+
+[output.html.search]
+enable = true
+
+# diagrams are mermaid code blocks, rendered in the browser. the two .js
+# files next to this one come from `mdbook-mermaid install docs`.
+[preprocessor.mermaid]
+command = "mdbook-mermaid"

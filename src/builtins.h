@@ -13,7 +13,7 @@
  * variable, the exit status) cannot be an external program, no matter what is
  * installed in PATH.
  *
- * That is also why this table has to be consulted before any fork(): once the
+ * It's also why this table has to be consulted before any fork(): once the
  * child exists, it is too late for a change to mean anything.
  */
 
@@ -32,7 +32,13 @@ typedef enum {
  * builtin and then forked a second time to exec the same name from PATH.
  *
  * *status is an out-parameter rather than a return value because a builtin
- * needs to report two things: a command to run (or not), and an exit status.
- * C functions return one thing; the second one comes back through a pointer.
+ * needs to report two things: what the loop should do next, and an exit
+ * status. C functions return one thing; the second one comes back through a
+ * pointer. It arrives holding the previous command's status, which `exit`
+ * with no argument needs; every builtin sets it before returning.
  */
 builtin_result ts_builtin_exec(char **argv, int *status);
+
+/* True if `name` is in the builtin table. The REPL asks before it decides
+ * whether a command runs in the shell or in a child. */
+bool ts_is_builtin(const char *name);

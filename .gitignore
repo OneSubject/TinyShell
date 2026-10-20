@@ -1,15 +1,27 @@
-# build artifacts
+# everything `make` produces goes in build/, including the book
 build/
-tinyshell
-
-# objects / deps
 *.o
 *.d
 
-# editors
-*~
-.session.vim
-
-# core dumps
+# core dumps, and what gcov leaves behind if you try coverage
 core
 core.*
+vgcore.*
+*.gcda
+*.gcno
+*.gcov
+
+# strace -o output, if you follow the debugging tips in the book
+trace.txt
+
+# editors
+*.swp
+*.swo
+*~
+.session.vim
+Session.vim
+.vscode/
+.idea/
+\#*\#
+.cache/
+compile_commands.json
